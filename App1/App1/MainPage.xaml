@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="App1.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:App1">
+
+    <StackLayout>
+        <!--  Place new controls here  -->
+        <!--<Label Text="肉鬆的第一支APP"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />-->
+        <Button
+            Clicked="Button_Clicked"
+            MinimumHeightRequest="200"
+            Text="計算機" />
+
+        <Button MinimumHeightRequest="200" Text="B" />
+
+        <Button MinimumHeightRequest="200" Text="C" />
+
+        <Button MinimumHeightRequest="200" Text="D" />
+
+        <Button MinimumHeightRequest="200" Text="E" />
+
+        <Button MinimumHeightRequest="200" Text="F" />
+
+        <Button MinimumHeightRequest="200" Text="G" />
+
+
+
+        <!-- <Image HorizontalOptions="Start" Source="https://lh5.googleusercontent.com/jA7QMEm1V2PFh_6-tHkFrJ3vN0AxsoPrG7Ac8fDsoy4TbPU6I756Zc3i0aRa4tXg" />
+        <Image HorizontalOptions="Start" Source="https://lh5.googleusercontent.com/AuVUAFjHHLSovNG6XzISJeB66p27uE4rzqn2cfGkwWRGoxsEbyWhzevdt41zyYR9" />-->
+    </StackLayout>
+
+</ContentPage>
