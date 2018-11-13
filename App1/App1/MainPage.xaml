@@ -12,8 +12,8 @@
            VerticalOptions="CenterAndExpand" />-->
         <Button
             Clicked="Button_Clicked"
-            MinimumHeightRequest="200"
-            Text="計算機" />
+            MinimumHeightRequest="300"
+            Text="七彩計算機" />
 
         <Button MinimumHeightRequest="200" Text="B" />
 

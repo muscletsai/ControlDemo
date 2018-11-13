@@ -27,16 +27,25 @@
                 Grid.ColumnSpan="4"
                 BackgroundColor="Black"
                 FontAttributes="Bold"
-                FontSize="Large"
+                FontSize="96"
                 HorizontalTextAlignment="End"
+                MaxLines="1"
                 Text="123456789"
                 TextColor="White"
                 VerticalTextAlignment="End" />
-
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Clicked="Button_Clicked"
+                Text="大" />
             <Button
                 Grid.Row="1"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Clicked="Button_Clicked_1"
+                Text="小" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
                 Text="C" />
             <Button
                 Grid.Row="1"
