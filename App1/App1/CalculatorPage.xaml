@@ -7,112 +7,139 @@
     <ContentPage.Content>
         <Grid x:Name="girdData">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="10" />
             </Grid.RowDefinitions>
 
             <Label
                 x:Name="labResult"
-                Grid.Row="0"
-                Grid.Column="0"
+                Grid.Row="2"
+                Grid.Column="1"
                 Grid.ColumnSpan="4"
                 BackgroundColor="Black"
                 FontAttributes="Bold"
-                FontSize="96"
+                FontSize="72"
                 HorizontalTextAlignment="End"
                 MaxLines="1"
                 Text="123456789"
                 TextColor="White"
                 VerticalTextAlignment="End" />
-            <Button
-                Grid.Row="1"
-                Grid.Column="0"
-                Clicked="Button_Clicked"
-                Text="大" />
-            <Button
-                Grid.Row="1"
+            <Image
+                Grid.Row="7"
                 Grid.Column="1"
-                Clicked="Button_Clicked_1"
-                Text="小" />
-            <Button
-                Grid.Row="1"
+                Source="{Binding Tool}"
+                StyleId="tool" />
+            <Image
+                Grid.Row="7"
                 Grid.Column="2"
-                Text="C" />
-            <Button
-                Grid.Row="1"
+                Source="{Binding Number0}"
+                StyleId="0" />
+            <Image
+                Grid.Row="7"
                 Grid.Column="3"
-                Text="/" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="0"
-                Text="1" />
-            <Button
-                Grid.Row="2"
+                Source="{Binding Point}"
+                StyleId="." />
+            <Image
+                Grid.Row="7"
+                Grid.Column="4"
+                Source="{Binding Anser}"
+                StyleId="=" />
+            <Image
+                Grid.Row="6"
                 Grid.Column="1"
-                Text="2" />
-            <Button
-                Grid.Row="2"
+                Source="{Binding Number1}"
+                StyleId="1" />
+            <Image
+                Grid.Row="6"
                 Grid.Column="2"
-                Text="3" />
-            <Button
-                Grid.Row="2"
+                Source="{Binding Number2}"
+                StyleId="2" />
+            <Image
+                Grid.Row="6"
                 Grid.Column="3"
-                Text="*" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="0"
-                Text="4" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="1"
-                Text="5" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="2"
-                Text="6" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="3"
-                Text="-" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="0"
-                Text="7" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="8" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="2"
-                Text="9" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="3"
-                Text="+" />
-            <Button
+                Source="{Binding Number3}"
+                StyleId="3" />
+            <Image
+                Grid.Row="6"
+                Grid.Column="4"
+                Source="{Binding Add}"
+                StyleId="+" />
+            <Image
                 Grid.Row="5"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Text="0" />
-            <Button
+                Grid.Column="1"
+                Source="{Binding Number4}"
+                StyleId="4" />
+            <Image
                 Grid.Row="5"
                 Grid.Column="2"
-                Text="." />
-            <Button
+                Source="{Binding Number5}"
+                StyleId="5" />
+            <Image
                 Grid.Row="5"
                 Grid.Column="3"
-                Text="=" />
+                Source="{Binding Number6}"
+                StyleId="6" />
+            <Image
+                Grid.Row="5"
+                Grid.Column="4"
+                Source="{Binding Del}"
+                StyleId="-" />
+            <Image
+                Grid.Row="4"
+                Grid.Column="1"
+                Source="{Binding Number7}"
+                StyleId="7" />
+            <Image
+                Grid.Row="4"
+                Grid.Column="2"
+                Source="{Binding Number8}"
+                StyleId="8" />
+            <Image
+                Grid.Row="4"
+                Grid.Column="3"
+                Source="{Binding Number9}"
+                StyleId="9" />
+            <Image
+                Grid.Row="4"
+                Grid.Column="4"
+                Source="{Binding Multiply}"
+                StyleId="*" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="1"
+                Source="{Binding Clear}"
+                StyleId="C" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="2"
+                Source="{Binding Back}"
+                StyleId="B" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="3"
+                Source="{Binding Percent}"
+                StyleId="%" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="4"
+                Source="{Binding Except}"
+                StyleId="/" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

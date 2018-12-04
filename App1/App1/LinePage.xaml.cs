@@ -11,7 +11,6 @@ using System.Globalization;
 
 namespace App1
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LinePage : ContentPage
     {
         ObservableCollection<string> _friends;
