@@ -25,7 +25,14 @@
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="10" />
             </Grid.RowDefinitions>
-
+            <Label
+                x:Name="labMethod"
+                Grid.Row="1"
+                Grid.Column="4"
+                FontSize="Large"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                VerticalOptions="End" />
             <Label
                 x:Name="labResult"
                 Grid.Row="2"
@@ -36,7 +43,7 @@
                 FontSize="72"
                 HorizontalTextAlignment="End"
                 MaxLines="1"
-                Text="123456789"
+                Text="0"
                 TextColor="White"
                 VerticalTextAlignment="End" />
             <Image

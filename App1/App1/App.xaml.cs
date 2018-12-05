@@ -7,12 +7,30 @@ namespace App1
 {
     public partial class App : Application
     {
+        public NavigationPage NavigationPage { get; private set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
-           
+            //var MainPage = new MainPage();
+            // MainPage = new NavigationPage(new MainPage());
+
+            var menuPage = new MenuPage();
+            NavigationPage = new NavigationPage(new MainPage());
+            var rootPage = new RootPage();
+            rootPage.Master = menuPage;
+            rootPage.Detail = NavigationPage;
+            MainPage = rootPage;
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    ToolbarItem tb = new ToolbarItem();
+            //    tb.Text = "123";
+            //    tb.Icon = "aa";
+            //    NavigationPage.ToolbarItems.Add(tb);
+            //}
+
         }
 
         protected override void OnStart()
@@ -29,5 +47,8 @@ namespace App1
         {
             // Handle when your app resumes
         }
+
     }
+
+
 }

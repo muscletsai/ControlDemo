@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="App1.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout Padding="5,5,5,0" BackgroundColor="Black">
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="內容"
+                TextColor="White" />
+            <Button
+                Clicked="Button_Clicked"
+                FontSize="Large"
+                HeightRequest="100"
+                HorizontalOptions="FillAndExpand"
+                Text="七彩計算機"
+                VerticalOptions="Start" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

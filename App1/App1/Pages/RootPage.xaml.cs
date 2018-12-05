@@ -11,23 +11,25 @@ using System.Globalization;
 
 namespace App1
 {
-    public partial class LinePage : ContentPage
+    public partial class RootPage : MasterDetailPage
     {
         ObservableCollection<string> _friends;
 
-        public LinePage()
+        public RootPage()
         {
             InitializeComponent();
+            
+            MasterBehavior = MasterBehavior.Popover;
             binding();
-            lvFriend.ItemsSource = _friends;
-
+          //  lvFriend.ItemsSource = _friends;
+           
         }
 
         private void binding()
         {
             _friends = new ObservableCollection<string>()
             {
-                "蒼井空","456","789"
+                "456","789"
 
             };
         }
@@ -35,13 +37,13 @@ namespace App1
         private async void ListView_Refreshing(object sender, EventArgs e)
         {
             await Task.Delay(500);
-            lvFriend.IsRefreshing = false;
+           // lvFriend.IsRefreshing = false;
         }
 
         private void LvFriend_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             // await
-            lvFriend.SelectedItem = null;
+           // lvFriend.SelectedItem = null;
 
         }
     }

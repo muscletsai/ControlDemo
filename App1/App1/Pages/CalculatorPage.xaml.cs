@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using App1.Models;
+using Plugin.Vibrate;
 
 namespace App1
 {
@@ -15,7 +16,7 @@ namespace App1
     public partial class CalculatorPage : ContentPage
     {
         ObservableCollection<NumberImage> _number = new ObservableCollection<NumberImage>();
-        
+        bool _fuistNumber = true;
 
         public CalculatorPage()
         {
@@ -98,7 +99,7 @@ namespace App1
                         {
                             Image img = v[0] as Image;
                             img.Aspect = Aspect.AspectFit;
-                            
+
                             // img.BackgroundColor = Color.Black;
                             var tapGestureRecognizer = new TapGestureRecognizer();
                             tapGestureRecognizer.Tapped += TapGestureRecognizer_Tapped1;
@@ -110,15 +111,58 @@ namespace App1
             }
         }
 
-        private void TapGestureRecognizer_Tapped1(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped1(object sender, EventArgs e)
         {
-            labResult.Text = ((Image)sender).StyleId;
-            switch (((Image)sender).StyleId)
+            var v = CrossVibrate.Current;
+            v.Vibration(TimeSpan.FromSeconds(0.1));
+            var meg = ((Image)sender).StyleId;
+            
+            switch (meg.ToUpper())
             {
+                case "TOOL":
+
+                    break;
+                case "=":
+                    labMethod.Text = "";
+                    break;
+                case "+":
+                    labMethod.Text = meg;
+                    break;
+                case "-":
+                    labMethod.Text = meg;
+                    break;
+                case "*":
+                    labMethod.Text = meg;
+                    break;
+                case "/":
+                    labMethod.Text = meg;
+                    break;
+                case "%":
+                    labMethod.Text = meg;
+                    break;
+                case "C":
+                    labResult.Text = "0";
+                    labMethod.Text = "";
+                    break;
+                case "B":
+                    if (labResult.Text.Length == 1)
+                        labResult.Text = "0";
+                    else
+                        labResult.Text = labResult.Text.Substring(0, labResult.Text.Length - 1);
+                    break;
                 default:
+
+                    if (labResult.Text.Length <= 9)
+                    {
+                        if (labResult.Text == "0")
+                            labResult.Text = meg;
+                        else
+                            labResult.Text += meg;
+                        _fuistNumber = false;
+                    }
                     break;
             }
-           
+
         }
 
 
@@ -138,7 +182,7 @@ namespace App1
                 labResult.Text = "";
             else if (value == "大" || value == "小")
             {
-                
+
                 Grid a = this.Content as Grid;
                 a.BackgroundColor = _colorList[_indexColor];
                 _indexColor++;
@@ -189,8 +233,9 @@ namespace App1
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            
+
         }
+
     }
 
 
