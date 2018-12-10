@@ -16,29 +16,46 @@ namespace App1
     public partial class CalculatorPage : ContentPage
     {
         ObservableCollection<NumberImage> _number = new ObservableCollection<NumberImage>();
-        bool _fuistNumber = true;
+        int _currIndex = 0;
 
         public CalculatorPage()
         {
             InitializeComponent();
-
-            //_colorList.Add(Color.Red);
-            //_colorList.Add(Color.Orange);
-            //_colorList.Add(Color.Yellow);
-            //_colorList.Add(Color.Green);
-            //_colorList.Add(Color.Blue);
-            //_colorList.Add(Color.Honeydew);
-            //_colorList.Add(Color.DarkSlateGray);
             load();
             createData();
-            girdData.BindingContext = _number[0];
+            girdData.BindingContext = _number[_currIndex];
         }
 
         private void createData()
         {
             _number.Clear();
 
+            NumberImage n0 = new NumberImage();
+            n0.StyleName = "基本版";
+            n0.Number0 = "n0";
+            n0.Number1 = "n1";
+            n0.Number2 = "n2";
+            n0.Number3 = "n3";
+            n0.Number4 = "n4";
+            n0.Number5 = "n5";
+            n0.Number6 = "n6";
+            n0.Number7 = "n7";
+            n0.Number8 = "n8";
+            n0.Number9 = "n9";
+            n0.Add = "nadd";
+            n0.Del = "ndel";
+            n0.Multiply = "nmultiply";
+            n0.Except = "nexcept";
+            n0.Point = "npoint";
+            n0.Anser = "nanser";
+            n0.Clear = "nclear";
+            n0.Tool = "ntool";
+            n0.Back = "nback";
+            n0.Percent = "npercent";
+            _number.Add(n0);
+
             NumberImage n1 = new NumberImage();
+            n1.StyleName = "黑與白(需網路)";
             n1.Number0 = "http://www.haipic.com/icon/55036/55036.png";
             n1.Number1 = "http://www.haipic.com/icon/55038/55038.png";
             n1.Number2 = "http://www.haipic.com/icon/55040/55040.png";
@@ -61,27 +78,39 @@ namespace App1
             n1.Percent = "https://cdn.icon-icons.com/icons2/37/PNG/512/percentage_3932.png";
             _number.Add(n1);
 
-            //NumberImage n2 = new NumberImage();
-            //n2.Number0 = "";
-            //n2.Number1 = "";
-            //n2.Number2 = "";
-            //n2.Number3 = "";
-            //n2.Number4 = "";
-            //n2.Number5 = "";
-            //n2.Number6 = "";
-            //n2.Number7 = "";
-            //n2.Number8 = "";
-            //n2.Number9 = "";
-            //n2.Add = "";
-            //n2.Del = "";
-            //n2.Multiply = "";
-            //n2.Except = "";
-            //n2.Point = "";
-            //n2.Anser = "";
-            //n2.Clear = "";
-            //n2.Tool = "";
+            NumberImage n2 = new NumberImage();
+            n1.StyleName = "毛筆(需網路)";
+            n2.Number0 = "http://img1.tplm123.com/2008/04/04/3421/2310301719241.jpg";
+            n2.Number1 = "http://img1.tplm123.com/2008/04/04/3421/2310229844357.jpg";
+            n2.Number2 = "http://img1.tplm123.com/2008/04/04/3421/2310150467181.jpg";
+            n2.Number3 = "http://img1.tplm123.com/2008/04/04/3421/2310073597436.jpg";
+            n2.Number4 = "http://img1.tplm123.com/2008/04/04/3421/2310000317934.jpg";
+            n2.Number5 = "http://img1.tplm123.com/2008/04/04/3421/2309846257640.jpg";
+            n2.Number6 = "http://img1.tplm123.com/2008/04/04/3421/2309782034450.jpg";
+            n2.Number7 = "http://pic.qiantucdn.com/uploadfilepic/ziku/2008-09-15/58PIC_vipvip_200809151734389e96b2361516c84a126.jpg";
+            n2.Number8 = "http://pic.qiantucdn.com/uploadfilepic/ziku/2008-09-12/58PIC_vipvip_2008091206180357898bab593f209473.jpg";
+            n2.Number9 = "http://img1.tplm123.com/2008/04/04/3421/2309672189899.jpg";
+            n2.Add = "http://pic.guoxuedashi.com/shufa/6t1/11288.jpg";
+            n2.Del = "http://pic.guoxuedashi.com/shufa/6t2/54320.jpg";
+            n2.Multiply = "http://pic.guoxuedashi.com/shufa/ks/R201308025_TM.TXT.0015.016.png";
+            n2.Except = "http://pic.guoxuedashi.com/shufa/6t3/101201.jpg";
+            n2.Point = "http://pic.guoxuedashi.com/shufa/6t3/109455.jpg";
+            n2.Anser = "http://pic.guoxuedashi.com/shufa/6t1/2155.jpg";
+            n2.Clear = "http://img1.tplm123.com/2008/04/04/3419/2306845005943.jpg";
+            n2.Tool = "http://pic.guoxuedashi.com/shufa/23/235270.jpg";
+            n2.Back = "https://en.pimg.jp/008/657/835/1/8657835.jpg";
+            n2.Percent = "https://photo.16pic.com/00/70/37/16pic_7037637_b.png";
 
-            //_number.Add(n2);
+            _number.Add(n2);
+        }
+
+        private int getNext()
+        {
+            _currIndex++;
+            if (_currIndex >= _number.Count)
+                _currIndex = 0;
+
+            return _currIndex;
         }
 
         private void load()
@@ -113,14 +142,18 @@ namespace App1
 
         private async void TapGestureRecognizer_Tapped1(object sender, EventArgs e)
         {
-            var v = CrossVibrate.Current;
-            v.Vibration(TimeSpan.FromSeconds(0.1));
+            if (Global.IsShock)
+            {
+                var v = CrossVibrate.Current;
+                v.Vibration(TimeSpan.FromSeconds(0.1));
+            }
+
             var meg = ((Image)sender).StyleId;
-            
+
             switch (meg.ToUpper())
             {
                 case "TOOL":
-
+                    girdData.BindingContext = _number[getNext()];
                     break;
                 case "=":
                     labMethod.Text = "";
@@ -150,6 +183,18 @@ namespace App1
                     else
                         labResult.Text = labResult.Text.Substring(0, labResult.Text.Length - 1);
                     break;
+                case ".":
+                    if(labResult.Text.Contains(".") == false)
+                    {
+                        if (labResult.Text.Length <= 9)
+                        {
+                            if (labResult.Text == "0")
+                                labResult.Text = meg;
+                            else
+                                labResult.Text += meg;
+                        }
+                    }
+                    break;
                 default:
 
                     if (labResult.Text.Length <= 9)
@@ -158,81 +203,9 @@ namespace App1
                             labResult.Text = meg;
                         else
                             labResult.Text += meg;
-                        _fuistNumber = false;
                     }
                     break;
             }
-
-        }
-
-
-
-
-        int _indexColor = 0;
-        List<Color> _colorList = new List<Color>();
-
-        private void Btn_Clicked(object sender, EventArgs e)
-        {
-            //  Grid a = ((Button)sender).Parent as Grid;
-
-            //  Label lab = (Label)(a.Children.Where(c => Grid.GetRow(c) == 0 && Grid.GetColumn(c) == 0));
-            string value = ((Button)sender).Text.ToUpper();
-
-            if (value == "C")
-                labResult.Text = "";
-            else if (value == "大" || value == "小")
-            {
-
-                Grid a = this.Content as Grid;
-                a.BackgroundColor = _colorList[_indexColor];
-                _indexColor++;
-                if (_indexColor == 7)
-                    _indexColor = 0;
-            }
-            else
-                labResult.Text += ((Button)sender).Text;
-            // lab.Text = ((Button)sender).Text;
-        }
-
-        private void Btn_SizeChanged(bool large)
-        {
-            Grid a = this.Content as Grid;
-
-            for (int rowIndex = 1; rowIndex < a.RowDefinitions.Count; rowIndex++)
-            {
-                for (int colIndex = 0; colIndex < a.ColumnDefinitions.Count; colIndex++)
-                {
-                    List<View> v = a.Children.Where(c => Grid.GetRow(c) == rowIndex && Grid.GetColumn(c) == colIndex).ToList();
-                    if (v.Count > 0)
-                    {
-                        if (v[0] is Button)
-                        {
-                            Button btn = v[0] as Button;
-                            if (large)
-                                btn.FontSize += 2;
-                            else
-                                btn.FontSize -= 2;
-                        }
-                    }
-                }
-            }
-
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            labResult.FontSize += 2;
-            Btn_SizeChanged(true);
-        }
-
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
-            labResult.FontSize -= 2;
-            Btn_SizeChanged(false);
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
 
         }
 

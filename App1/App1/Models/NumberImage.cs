@@ -6,6 +6,7 @@ namespace App1.Models
 {
     public class NumberImage
     {
+        public string StyleName { get; set; }
         public string Number0 { get; set; }
         public string Number1 { get; set; }
         public string Number2 { get; set; }

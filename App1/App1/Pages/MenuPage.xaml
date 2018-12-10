@@ -2,7 +2,8 @@
 <ContentPage
     x:Class="App1.MenuPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    WidthRequest="100">
     <ContentPage.Content>
         <StackLayout Padding="5,5,5,0" BackgroundColor="Black">
             <Label
@@ -12,11 +13,20 @@
                 Text="內容"
                 TextColor="White" />
             <Button
-                Clicked="Button_Clicked"
+                x:Name="btnShock"
+                Clicked="btnShock_Clicked"
                 FontSize="Large"
                 HeightRequest="100"
                 HorizontalOptions="FillAndExpand"
-                Text="七彩計算機"
+                Text="震動功能"
+                VerticalOptions="Start" />
+            <Button
+                x:Name="btnVoice"
+                Clicked="btnVoice_Clicked"
+                FontSize="Large"
+                HeightRequest="100"
+                HorizontalOptions="FillAndExpand"
+                Text="按鍵聲音"
                 VerticalOptions="Start" />
         </StackLayout>
     </ContentPage.Content>

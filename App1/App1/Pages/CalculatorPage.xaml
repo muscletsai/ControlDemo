@@ -17,7 +17,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10" />
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="3*" />
@@ -40,7 +40,7 @@
                 Grid.ColumnSpan="4"
                 BackgroundColor="Black"
                 FontAttributes="Bold"
-                FontSize="72"
+                FontSize="48"
                 HorizontalTextAlignment="End"
                 MaxLines="1"
                 Text="0"
