@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using App1.Models;
 using Plugin.Vibrate;
+using Plugin.MediaManager;
 
 namespace App1
 {
@@ -142,15 +143,22 @@ namespace App1
 
         private async void TapGestureRecognizer_Tapped1(object sender, EventArgs e)
         {
+            Image image = (Image)sender;
+            NumberImage nn = image.BindingContext as NumberImage;
+
             if (Global.IsShock)
             {
                 var v = CrossVibrate.Current;
                 v.Vibration(TimeSpan.FromSeconds(0.1));
             }
 
-            var meg = ((Image)sender).StyleId;
+            if (Global.IsVoice)
+            {
+                string url = nn.GetVoice(image.StyleId.ToUpper());
+                await CrossMediaManager.Current.Play(url);
+            }
 
-            switch (meg.ToUpper())
+            switch (image.StyleId.ToUpper())
             {
                 case "TOOL":
                     girdData.BindingContext = _number[getNext()];
@@ -159,19 +167,19 @@ namespace App1
                     labMethod.Text = "";
                     break;
                 case "+":
-                    labMethod.Text = meg;
+                    labMethod.Text = image.StyleId;
                     break;
                 case "-":
-                    labMethod.Text = meg;
+                    labMethod.Text = image.StyleId;
                     break;
                 case "*":
-                    labMethod.Text = meg;
+                    labMethod.Text = image.StyleId;
                     break;
                 case "/":
-                    labMethod.Text = meg;
+                    labMethod.Text = image.StyleId;
                     break;
                 case "%":
-                    labMethod.Text = meg;
+                    labMethod.Text = image.StyleId;
                     break;
                 case "C":
                     labResult.Text = "0";
@@ -184,14 +192,14 @@ namespace App1
                         labResult.Text = labResult.Text.Substring(0, labResult.Text.Length - 1);
                     break;
                 case ".":
-                    if(labResult.Text.Contains(".") == false)
+                    if (labResult.Text.Contains(".") == false)
                     {
                         if (labResult.Text.Length <= 9)
                         {
                             if (labResult.Text == "0")
-                                labResult.Text = meg;
+                                labResult.Text = image.StyleId;
                             else
-                                labResult.Text += meg;
+                                labResult.Text += image.StyleId;
                         }
                     }
                     break;
@@ -200,9 +208,9 @@ namespace App1
                     if (labResult.Text.Length <= 9)
                     {
                         if (labResult.Text == "0")
-                            labResult.Text = meg;
+                            labResult.Text = image.StyleId;
                         else
-                            labResult.Text += meg;
+                            labResult.Text += image.StyleId;
                     }
                     break;
             }
